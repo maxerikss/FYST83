@@ -1,0 +1,112 @@
+\section{Emission and Absorption of Radiation by Atoms}
+
+\subsection{Atom-Field Interactions}
+An electron bound to an atom in an external field, can be described by the Hamiltonian
+\begin{equation}
+    \hamiltonian(\vec{r}, t) = \frac{1}{2m} \left[ \vec{\hat{P}} + e\vec{A}(\vec{\hat{r}}, t) \right]^2 + e \Phi(\vec{\hat{r}}, t) + V(\vec{\hat{r}}),
+\end{equation}
+where the momentum operator $\vec{\hat{P}} = -i\hbar\nabla$, $V$ is the Coulomb potential, and $\Phi$,$\vec{A}$ are the scalar and vector potentials of the external field. The fields are given by
+\begin{equation}
+    \vec{E}(\vec{r}, t) = -\nabla \Phi(\vec{r}, t) - \frac{\partial \vec{A}(\vec{r}, t)}{\partial t} \textand \vec{B}(\vec{r}, t) = \nabla \times \vec{A}(\vec{r}, t),
+\end{equation}
+invariant under gauge transformations $\Phi' = \Phi - \partial_t \chi(\vec{r}, t)$ and $\vec{A}' = \vec{A} + \nabla \chi(\vec{r}, t)$. We choose the Coulomb gauge $\nabla \cdot \vec{A} = 0$ gives $\Phi = 0$, and since an atom is much smaller than the wavelength of the field $\vec{k} \cdot \vec{r} \approx 0$. We place the atom at the origin and neglect the spatial dependence, giving $\vec{A}(\vec{r}, t)\simeq \vec{A}(t)$ and $\Phi(\vec{r}, t)\simeq \Phi(t)$. Performing the gauge transformation $\chi(\vec{r}, t) = -\vec{A}(t) \cdot \vec{r}$ gives the Hamiltonian
+\begin{equation}
+    \hamiltonian(\vec{r},t) = \frac{\vec{\hat{P}}^2}{2m} + V(\vec{\hat r}) - \dipole \cdot \vec{E}(t) = \hamiltonian_0 - \dipole \cdot \vec{E}(t), 
+\end{equation}
+where $\dipole = -e \vec{\hat r}$ is the dipole moment. This is called Göppert-Mayer gauge, and contains one interaction term with the field, the electic dipole interaction. The electric field may be either classical or quantized. \study{It would be interesting to see if other choices of gauge and gauge transformations could be used, and also test the validity of the dipole approximations for larger systems.}
+
+\subsection{Interaction of an Atom with a Classical Field}
+We perform time-dependant perturbation theory, assuming $H_I = -\dipole \cdot \vec{E}(t)$, is small. Assuming that the system is initially in a state $\ket{i}$ and due to the interaction it transition to a state $\ket{f}$. The probability of being in the final state is
+\begin{equation}
+    P_f(t) = \frac{1}{\hbar^2} \abs{\bra{f} \dipole \cdot \vec{E}_0 \ket{i}}^2 \frac{\sin (\Delta t/2)}{\Delta^2} \stackrel{\Delta \to 0}{=} \frac{1}{\hbar^2} \abs{\bra{f} \dipole \cdot \vec{E}_0 \ket{i}}^2 t^2,
+\end{equation}
+where $\Delta = \omega - \omega_{fi}$ is the detuning between the field frequency and the transition frequency. The transition probability rate is given by Fermi's golden rule
+\begin{equation}
+    W_{i\to f} \approx \frac{2\pi}{\hbar} \abs{\bra{f} \dipole \cdot \vec{E} \ket{i}}^2 \delta(\omega - \omega_{fi}),
+\end{equation}
+where $\hbar\omega_{fi}$ is the energy difference between the initial and final state, and $\omega$ is the frequency of the field. This is generally accurate for incoherent light, for coherent/laser light, we need to consider the Rabi model.
+
+
+\subsection{Interaction of an Atom with a Quantized Field} \label{sec:interaction_quantized}
+The interaction Hamiltonian for a quantized field with the dipole approximation in Schrödinger picture is given by $\hamiltonian_I = - \dipole \cdot \sum_{\vec{k}s}\vec{E}_{0 \vec{k}s} (\a_{\vec{k} s} - \ad_{\vec{k} s})$. We also consider the free-field Hamiltonian $\hamiltonian_F = \sum_{\vec{k} s} \hbar\omega_{\vec{k} s}(\ad_{\vec{k} s}\a_{\vec{k} s} + 1/2)$, we count modes as $j$ with $\vec{k}_j, s_j$. The total Hamiltonian is then $\hamiltonian = \hamiltonian_A + \hamiltonian_F + \hamiltonian_I = \hamiltonian_0 + \hamiltonian_I$. We have the inital state $\ket{i} = \ket{\varphi_i} \otimes \bigotimes_j \ket{n_j}$ and final state $\ket{f} = \ket{\varphi_f} \otimes \bigotimes_j \ket{n'_j}$. A transition via mode $j$ requires that $\epsilon_f = \epsilon_i \pm \hbar\omega_j$ and $n'_j = n_j \mp 1$, with $\epsilon$ being the energy of the atomic states. That is, we either remove $\hbar\omega_j$ from the field, decreasing the photon number, and add it to the atom, which we call absorption, or we do the oppsite, which we call emission. Fermi's golden rule gives the transition probability rate for absorption and emission as 
+\begin{equation}
+    W_{i \to f} \approx \frac{2\pi}{\hbar}\abs{\bra{f} \dipole \cdot \hat{\vec E}\ket{i}}^2 \delta (E^0_f -E^0_i)
+\end{equation}
+with
+\begin{equation}
+    \bra{f} \dipole \cdot \hat{\vec E}\ket{i} = \bra{\varphi_f} \dipole\ket{\varphi_i} \cdot i \sum_j A_j \vec{e}_j \bigotimes_l\bra{n'_l} (\a_j - \ad_j)  \bigotimes_m\ket{n_m}.
+\end{equation}
+For absorption via mode $j$ we have $n'_j = n_j - 1$, and $i=g, f=e$, giving 
+\begin{equation}
+    W_{g\to e}^j \approx \frac{2\pi}{\hbar} \abs{\bra{e} \dipole \cdot \vec{e}_j \ket{g}}^2 A_j^2 n_j \delta(\hbar\omega_j - \epsilon_e + \epsilon_g)
+\end{equation}
+and for emission via mode $j$ we have $n'_j = n_j + 1$ and $i=e, f=g$, giving
+\begin{equation}
+    W_{e \to g}^j \approx \frac{2\pi}{\hbar} \abs{\bra{g} \dipole \cdot \vec{e}_j \ket{e}}^2 A_j^2 (n_j + 1) \delta(\hbar\omega_j - \epsilon_e + \epsilon_g).
+\end{equation}
+Thus we can see that even if the field is in a vacuum state with $n_j = 0$, we can still observe spontaneous emission. This is in contrast to the classical field case, where only stimulated emission occurs. Spontaneous emission is thus a quantum mechanical effect, stemming from the interaction with vacuum fluctiations of the quantized electromagnetic field. The rate over all modes is given by summing over all modes, or equivalently integrating over the density of states, giving
+\begin{equation}
+    W_{g\to e} = \frac{\omega_0 \vec{d}^2}{3\pi \hbar c^3 \varepsilon_0}\bar{n}(\omega_0) \textand W_{e\to g} = \frac{\omega_0 \vec{d}^2}{3\pi \hbar c^3 \varepsilon_0} [\bar{n}(\omega_0) + 1],
+\end{equation}
+where we have averaged over all polarization directions, and $\bar{n}(\omega_0)$ is the average photon number given by the Boltzmann distribution in Eq. \eqref{eq:meanN}. We can see that spontaneous emission dominates for low temperatures.
+
+\subsection{The Rabi Model}
+We will assume a coherent field with near resonance frequency between two atomic levels, and neglect al other modes. We can write the interaction Hamiltonian as $\hamiltonian_I = \hat V_0 \cos\omega t$, and we define the Rabi frequency $\Omega_R =\hat V_0/\hbar$. Using the rotating wave approcimation, we can write the equations of motion for the probaiblity amplitudes in the interaction picture as
+\begin{equation}
+    i 
+    \begin{pmatrix}
+        \dot{C}_e\\
+        \dot{C}_g
+    \end{pmatrix}
+    = \frac{\Omega_R}{2}
+    \begin{pmatrix}
+        0 & \exp[i(\omega_0 -\omega)t]\\
+        \exp[-i(\omega_0 -\omega)t] & 0
+    \end{pmatrix}
+    \begin{pmatrix}
+        C_e\\
+        C_g
+    \end{pmatrix}.
+\end{equation}
+Introducing the detuning $\Delta = \omega_0 - \omega$, the generalized Rabi frequancy $\Omega = \sqrt{\Delta^2 + \Omega_R^2}$ and solving the eigenvalue problem with initial condition $C_g(0) = 1$, $C_e(0) = 0$, we find the probability of being in the excited state as 
+\begin{equation}
+    P_e(t) = \frac{\Omega_R^2}{\Omega^2} \sin^2(\Omega t/2) = \frac{\Omega_R^2}{\Omega^2} \frac{1 - \cos(\Omega t)}{2},
+\end{equation}
+which is called Rabi oscillations. The system oscillates between ground and a partially occupied excited state with the frequency $\Omega$. If the detuning $\Delta = 0$, we observe full population inversion. Defining the pulse area $A = \Omega_R t$, we see that when $A = \pi$, calleda $\pi$-pulse, we have maximum population inverson. If $\Delta = 0$ with a pulse area of $A = \pi/2$, calleda $\pi/2$-pulse, we have a symmetric superposition of the ground and excited states.
+
+\subsection{Fully Quanum Mechanical Model: The Jaynes-Cummings Model}
+We consider a single mode quantized field interacting with a two-level system,
+where the electric field operator is 
+\begin{equation}
+    \vec{E} = \vec{e} \sqrt{\frac{\hbar\omega}{\epsilon_0 V}} (\a + \ad)\sin kz
+\end{equation}
+and defining $\hat{d} = \dipole \cdot \vec{e}$ and $g = \sqrt{\hbar\omega / \epsilon_0 V} \sin kz$ we write the interaction Hamiltonian as $\hamiltonian_I = \hat{d}g (\a + \ad)$. We also introduce the atomic transition operators $\atomup = \ket{e}\bra{g}$ and $\atomdown = \ket{g}\bra{e}$ as well as the inversion operator $\atomz = \ket{e}\bra{e} - \ket{g}\bra{g}$, obeying Pauli spin algebra. We rewrite the dipole operator as $\hat{d} = d(\atomup + \atomdown)$ and define the coupling $\lambda = dg/\hbar$. By defining $\Delta E=0$, dropping the zero-point energy and using the rotating wave approximation, we can write the Jaynes-Cummings Hamiltonian as
+\begin{equation}
+    \hamiltonian = \frac{\hbar\omega_0}{2} \atomz + \hbar\omega \ad\a + \hbar\lambda (\atomup\a + \atomdown\ad).
+\end{equation}
+The system will be in a product state with the atom in either the ground or excited state, and the field in a number state. The interaction will cause transition between the states $\ket{g}\otimes\ket{n+1}$ and $\ket{e}\otimes\ket{n}$, and thus $E_i = E_f$. Assuming $\Delta = 0$, we let $\ket{i} = \ket{e}\otimes\ket{n}$ and solve the time-dependent Schrödinger equation, we find the probabilities $P_i(t)=\cos^2(\lambda t \sqrt{n+1})$ and $P_f(t)=\sin^2(\lambda t \sqrt{n+1})$, and the atomic inversion is given by $\langle \atomz\rangle = P_i(t) - P_f(t) = \cos(2\lambda t \sqrt{n+1})$. We get a quantum Rabi frequency $\Omega_n = 2\lambda\sqrt{n+1}$. Interestingly, even when the field is in the vacuum state, oscillations still occur. The reasoning being that the atom emit and reabsorbs a photon. If we let the field be in a superposition of number states, as well as the atom in a superposition of the ground and excited state, we get in general, an entangled state. Considering coherent states, we find that the atomic inversion is given by $W(t) = e^{-\bar{n}}\sum_n \bar{n}^n / n! \cos(\Omega_n t)$, and the main oscillation is given by the Rabi frequency $\Omega_{\bar{n}}$. \question{Since this Hamiltonian describes a two-level system in a single mode field, we should be able to describe a qubit in a microwave cavity. Is this model sufficient to describe this system for quantum technological applications? E.g. quantum computation or quantum sensing.}
+
+\subsection{The Dressed States}
+Let $\Delta \neq 0$, and define the basis $\{\ket{\psi_1^n}=\ket{e}\ket{n}, \ket{\psi_2^n}=\ket{g}\ket{n+1}\}$. The Hamiltonian in this basis is given by
+\begin{equation}
+    \hamiltonian_n = \hbar
+    \begin{bmatrix}
+        n\omega + \omega_0/2 & \lambda\sqrt{n+1}\\
+        \lambda\sqrt{n+1} & (n+1)\omega -\omega_0/2
+    \end{bmatrix}
+    \textwith
+    E_\pm^n = \hbar\omega(n+1/2) \pm \hbar\Omega_n(\Delta)/2,
+\end{equation}
+where we define the Rabi frequency $\Omega_n(\Delta) = \sqrt{\Delta^2 + 4\lambda^2(n+1)}$. The eigenstates of this Hamiltonian are called the dressed states, and are given by
+\begin{align}
+    \ket{n,+} &= \cos(\Phi_n/2)\ket{e}\ket{n} + \sin(\Phi_n/2)\ket{g}\ket{n+1} \\
+    \ket{n,-} &= -\sin(\Phi_n/2)\ket{e}\ket{n} + \cos(\Phi_n/2)\ket{g}\ket{n+1},
+\end{align}
+with $\Phi_n = \arctan(\Omega_n(0)/\Delta)$. Since the dressed states are stationary, we can use them to describe the time eveolution of a general state. Put an atom in state $\ket{e}$ into a general field, $\ket{\psi(0)} = \sum_n C_n \ket{n}\ket{e}$, writing this in terms of $\ket{n, \pm}$, and using the time evolution of the dressed states, we find
+\begin{equation}
+    \ket{\psi(t)} = \sum_n C_n \left[ \exp(-i E_+^n t /\hbar) \cos(\Phi_n/2)\ket{n,+} - \exp(-i E_-^n t /\hbar)\sin(\Phi_n/2) \ket{n,-} \right].
+\end{equation}
+
+
+\subsection{The Density Operator Approach: Application to Thermal States}
+In general we might have a thermal field, that is mixed states, which requires a density matrix formulation. We assume that the system initially is not entangled so we may factor $\density = \density^A \otimes \density^F$, where $\density^A = \ket{e}\bra{e}$ and $\density^F = \density_{Th}$. This gives the atomic inversion $W(t) = \sum_n P_n \cos(\Omega_n(0)t)$, with $P_n$ described in Sec. \ref{sec:thermalFields}. This atomic inversion collapses quickly from the excited states and then fluctates around zero. The fluctations are noise characteristic of thermal fluctuations, where for larger $\bar{n}$ the amplitude becomes smaller. Without assuming the thermal field, we can generally write the atomic inversion $W(t) = \sum_n 2\rho_{ee}^A(t) - 1$, with $\rho_{ee}^A(t) = \sum_n \bra{n} \density^F(t)\ket{n} \cos^2(\Omega_n(0)t/2 )$. \study{It would be interesting to see how the atomic inversion would evolve for other types of fields or superposition of the intial state of the atom. We could maybe also imagine two two-level systems inside the cavity that are entangled, which would be interesting to study.}

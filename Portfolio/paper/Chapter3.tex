@@ -1,0 +1,73 @@
+\section{Coherent States}
+Coherent states are quantum states of the quantized electromagnetic field that gives a sensible classical limit, and can therefore be considered the most classical quantum states. 
+\subsection{Eigenstates of the Annihilation Operator and Minimum Uncertainty States}
+The coherent states are defined as eigenstates of the annihilation operator such that $\a \ket{\alpha} = \alpha \ket{\alpha}$ for $\alpha \in \mathbb{C}$. Then it follows that $\bra{\alpha}\ad = \bra{\alpha}\alpha^*$. Expanding the coherent states in the number basis $\ket{n}$ and normalizing, we find 
+\begin{equation}
+    \ket{\alpha} = e^{-\abs{\alpha}^2/2} \sum_{n=0}^{\infty} \frac{\alpha^n}{\sqrt{n!}}\ket{n}.
+\end{equation}
+Theses states are minimum uncertainty states, satisfying equality in the Heisenberg uncertainty relation. It is possible to define the coherent state from this instead, minimizing the uncertainty for the quadrature operators. We also find that the expectation value of the field does not vanish, as it did for the number states, and the fluctuations is the same as for vacuum. From the definition of the coherent states and the number operator we find that $\bar n = \abs{\alpha}^2$, and so $\alpha$ is related to the photon number. The fluctations of the number of photons in a coherent state follows a Poisson distribution, such that $\Delta n = \sqrt{\bar n}$ and the probability of finding $n$ photons is given by $P_n = e^{-\bar n} \bar{n}^n / n!$. The fluctuations in the photon number thus increases with increasing photon number, and the relative fluctuations decreases as $\Delta n / \bar n = 1/\sqrt{\bar n}$. Furthermore, the coherent states are well localised in phase for large $\bar n$.
+
+\subsection{Displaced Vacuum States}
+We can also define the coherent states from the displacement operator acting on the vacuum state, such that $\ket{\alpha} = \hat D(\alpha)\ket{0}$, where $\hat D (\alpha) = \exp(\alpha \ad - \alpha^*\a) = \mathrm{exp} (-\abs{\alpha}^2/2) \exp(\alpha\ad) \exp(-\alpha^*\a)$ is a unitary operator. This operator also has the property that up to a global phase factor, $\hat{D}(\alpha)\hat{D}(\beta) = \hat{D}(\alpha + \beta)$, and the global phase factor does not affect the physics. Another property of the displacement operator is $\hat D^\dagger(\alpha) \a \hat D(\alpha) = \a + \alpha$, and $\hat D(\alpha) \a \hat D^\dagger(\alpha) = \a - \alpha$ The matrix elements of the displacement operator in the number state basis is given by
+\begin{equation}
+    \bra{m} \hat{D}(\alpha) \ket{n} = \sqrt{m!n!} e^{-\abs{\alpha}^2/2} \sum_{l=0}^{\min(m,n)} \frac{\alpha^{m-l} (-\alpha^*)^{n-l}}{l!(m-l)!(n-l)!}
+\end{equation}
+
+\subsection{Wave Packets and Time Evolution}
+The time evolution of a coherent state can be described as $\ket{\alpha, t} = \exp(-i\omega t /2)\ket{\alpha \exp(-i\omega t)}$. The wave function for a coherent state in the position basis is described by a Guassian wave packet. The time evolution of this state is given by
+\begin{equation}
+    \psi_\alpha(x,t) = \left( \frac{\omega}{\pi \hbar} \right)^{1/4} \exp(-\abs{\alpha}^2/2) \exp(\frac{x^2\omega^2}{2\hbar^2 }) \exp[-\left( \frac{x^2\omega^2}{\hbar^2} - \frac{\alpha e^{i\omega t}}{\sqrt{2}} \right)^2]
+\end{equation}
+The integer spacing of the energy levels of the quantum harmonic oscillator gives rise to a Gaussian wave packet that does not change with time but rather oscillates back and forth, with the centroid follwoing a classical point mass in a harmonic potential. \question{How do we use this property for trapped ions?}
+
+\subsection{Generation of Coherent States}
+It is possible to generate coherent states by letting a classical oscillating current interact with the quantized vector field. The interaction energy may then be written as 
+\begin{equation}
+    \hat{V}(t) = - \sqrt{\frac{\hbar}{2\omega\epsilon_0 V}} \left[ \a \vec{e} \cdot \vec{J}(\vec{k},t) e^{-i\omega t} + \ad \vec{e} \cdot \vec{J}^*(\vec{k}, t)e^{i\omega t} \right],
+\end{equation}
+by introducing 
+\begin{equation}
+    u(t) = i \sqrt{\frac{1}{2\hbar\omega\epsilon_0V}} \vec{e} \cdot \vec{J}^*(\vec{k},t)e^{i\omega t}  \textand \hat{V}(t) = i\hbar \left[u(t)\ad - u^*(t)\a \right]
+\end{equation}
+we can write the time evolution operator for a finite time difference $\delta t$ in the interaction picture as
+\begin{equation}
+    \hat{U}(t + \delta t, t) = \exp(- \frac{i}{\hbar}\hat{V}(t)\delta t) = \exp(\delta t [u(t)\ad - u^*(t)\a]) = \hat{D}(u(t)\delta t),
+\end{equation}
+where in the last step we identify the displacement operator and that $\delta t$ is real. Taking the limit $\delta t \to 0$ while integrating over a finite time interval with the time ordering operator $\hat{\mathcal{T}}$, and ignoring the global phase factor we find that
+\begin{equation}
+    \hat{U}(T,0) = \lim_{\delta t \to 0} \mathcal{\hat{T}} \prod_{n=0}^{T/\delta t} \hat{D}[u(t_n) \delta t] = \lim_{\delta t \to 0} \hat{D}\left[ \sum_{n=0}^{T/\delta t} u(t_n) \delta t \right]  = \hat{D}[\alpha(T)] \textand \alpha(T) = \int_0^T u(t) dt.
+\end{equation}
+If the initial state is the vacuum state, the final state after the interaction, described by a displacment operator, is thus a coherent state $\ket{\alpha(T)}$, and $\alpha(T)$ is related to the classical current $\vec{J}(\vec{k},t)$. It is straightforward to show that $U(t,t') = \hat{D}[\alpha(t) - \alpha(t')]$ up to a global phase difference. Thus, the interpretation of this is that the time evolution of the vacuum state from $t'$ to $t$ is equivalent to the same displacement as the evolution from a coherent state $\ket{\alpha(t')}$ to $\ket{\alpha(t)}$.
+
+\subsection{More on the Properties of Coherent States}
+Unlike the number states, the coherent states are not orthogonal, and $\bra{\alpha}\ket{\beta} = \mathrm{exp} (-\abs{\alpha - \beta}^2)$. They are however complete, satisfying the completeness relation 
+\begin{equation}
+    \int d^2\alpha \ket{\alpha}\bra{\alpha} = \pi \mathbb{I} \textwith d^2\alpha = d\real{\alpha} d\imaginary{\alpha}.
+\end{equation}
+The coherent states are thus overcomplete, and we can expand any state $\ket{\psi}$ in terms of coherent states by inserting the completeness relation. Furthermore, for an operator $\hat{F} = F(\a, \ad)$, the diaganoal elements $\bra{\alpha} \hat{F} \ket{\alpha}$ is sufficient to determine the operator completely in the number basis.
+
+\subsection{Phase-Space Pictures of Coherent States}
+Since canonical variables cannot be represented by a single point in phase.space due to them not commuting, they are instead represented by a distribution. The coherent states are minimum uncertainty states, with equal uncertainty in both quadratures, and expectation values $\langle{\X}\rangle_\alpha = \real{\alpha}$ and $\langle{\XX}\rangle_\alpha = \imaginary{\alpha}$, yielding coordinates in phase-space. The area of uncertainty is given by the circle with radius $\Delta \X = \Delta \XX = 1/2$. Writing $\alpha = \abs{\alpha} \exp(i\theta)$, we can therefore define any state $\ket{\alpha}$ by the magnitude and angle in phase-space. It is clear that for as $\abs{\alpha}$ increases the uncertainty $\Delta \theta$ decreases. Comparing to number states, which have random phase but well-defined photon number, the phase-space representation is a circle around the origin with radius $n$. The time evolution of a coherent state in phase-space is a circular motion around the origin with angular frequency $\omega$. When taking the expectation value for the electric field for example, we find that the result is a projection of this motion onto the $\X$-axis, yielding an oscillating field, with uncertainty given by the radius of the uncertainty circle. For the magnetic field we instead project onto the $\XX$-axis.
+
+\subsection{Density Operators and Phase-Space Probability Distributions}
+Using coherent states we can write the density operator for a general state as
+\begin{equation}
+    \hat{\rho} = \int d^2\alpha P(\alpha) \ket{\alpha}\bra{\alpha},
+\end{equation}
+where $P(\alpha)$ is the Glauber-Sudarshan $P$-function, which is a quasiprobability distribution in phase-space, and can take negative values. States corresponding to $P(\alpha) \leq 0$ or states that are highly singular, meaning more singular than the delta function, are called nonclassical states. \question{How something is more singular than a delta function is not clear to me. It requires defined derivatives of the function you integrate together with the derivative of a delta function, but why does this make it more singular?}
+
+Normal ordering of operators is defined such that all annihilation operators are to the right of all creation operators, anti-normal ordering is the opposite. For a normal ordered operator $\normalorder{G(\a, \ad)} = G^{(N)}(\a, \ad)$, the optical equivalence theorem states that the expectation value is given by
+\begin{equation}
+    \expval{G^{(N)}(\a, \ad)} = \int d^2 \alpha P(\alpha) G^{(N)}(\alpha, \alpha^*)
+\end{equation}
+which is thus a classical weighted average over phase-space with $P(\alpha)$ as weight. 
+
+Another distribution function is the Husimi $Q$-function, defined as
+\begin{equation}
+    Q(\alpha) = \frac{\bra{\alpha}\hat{\rho}\ket{\alpha}}{\pi}.
+\end{equation}
+We can also calculate the expectation value of an operator using the $Q$- function and the $Q$-function is always positive. Lastly, we have the Wigner function, defined as
+\begin{equation}
+    F_W (q, p) = \frac{1}{2\pi \hbar} \int_{-\infty}^{\infty} dx \bra{q + \frac{1}{2} x} \hat{\rho} \ket{q - \frac{1}{2} x} e^{-i p x/\hbar}.
+\end{equation}
+The Wigner function is a quasiprobability distribution, with negative values. Similarly to the $P$- and $Q$-functions, we can calculate expectation values of operators. However, for the Wigner function we have to use Weyl (symmetric) ordering of the operators, for example $\{\hat{p} \hat{q}\}_W = (\hat{p}\hat{q} + \hat{q}\hat{p})/2$.

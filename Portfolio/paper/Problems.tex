@@ -1,0 +1,107 @@
+\unNumberedSection{Problems}
+\unNumberedSubSection{Chapter 2: Field Quantization}
+\paragraph{Problem 5:} Suppose that the state of a single-mode cavity is given at time $t=0$ by
+\begin{equation}
+    \ket{\psi(0)} = \frac{1}{\sqrt{2}} (\ket{n} + e^{i\phi}\ket{n+1})
+\end{equation}
+where $\phi$ is some phase. Find the state $\ket{\psi(t)}$ at times $t>0$. For  this time-evolved state, verify the uncertainty relation.
+\paragraph{Solution:} We have that $\ket{\psi(t)} = \hat U(t) \ket{\psi(0)}$, and thus
+\begin{align}
+    \ket{\psi(t)} &= \frac{1}{\sqrt{2}} \left( e^{- \hamiltonian t /\hbar} \ket{n} + e^{i\phi} e^{- \hamiltonian t /\hbar}\ket{n+1} \right)\\
+    &= \frac{1}{\sqrt{2}} \left[ \left( 1 - i\frac{\hamiltonian}{\hbar}t - \frac{\hamiltonian^2}{\hbar^2}t^2 + i \frac{\hamiltonian^3}{\hbar^3}t^3 + \cdots \right)\ket{n} \right. \\ 
+    &\left. \quad+ e^{i\phi} \left( 1 - i\frac{\hamiltonian}{\hbar}t - \frac{\hamiltonian^2}{\hbar^2}t^2 + i \frac{\hamiltonian^3}{\hbar^3}t^3 + \cdots \right)\ket{n+1} \right]\\
+    &=\frac{1}{\sqrt{2}} \left[ \left( 1 - i\omega(n + 1/2)t - \omega(n + 1/2)^2t^2 + i \omega(n + 1/2)^3t^3 + \cdots \right)\ket{n} \right. \\ 
+    &\left. \quad+ e^{i\phi} \left( 1 - i\omega(n + 3/2)t - \omega(n + 3/2)^2t^2 + i \omega(n + 3/2)^3t^3 + \cdots \right)\ket{n+1} \right] \\
+    &= \frac{1}{\sqrt{2}} \left( e^{-i \omega (n+1/2)t}\ket{n} + e^{i\phi} e^{-i\omega(n+3/2)t}\ket{n+1} \right)\\
+    &= \frac{e^{-i\omega(n+1/2)t}}{\sqrt{2}} \left(\ket{n} + e^{i(\phi - \omega t)}\ket{n+1}\right)
+\end{align}
+Now we want to verify the uncertainty relation $\Delta \hat{X}_1 \Delta \hat{X}_2 \geq 1/4$. We find that $\expval{\hat X_1} = \cos(\phi - \omega t) \sqrt{n+1}/2$ and $\expval{\hat X_2} = \sin(\phi - \omega t) \sqrt{n+1}/2$ and $\expval{\hat{X}_1} = \expval{\hat X_2} = (n+1)/2$. Calculating this yields,
+\begin{equation}
+    \Delta \hat{X}_1 \Delta \hat{X}_2 = \frac{n+1}{4} \sqrt{2 + \frac{\sin(2(\phi - \omega t))}{4}}
+\end{equation}
+which has its minimum value for $n=0$ and $t = \phi/\omega$, thus
+\begin{equation}
+    \Delta \hat{X}_1 \Delta \hat{X}_2 = \frac{1}{4} \sqrt{2} = \frac{1}{2\sqrt{2}} > \frac{1}{4}.
+\end{equation}
+
+\unNumberedSubSection{Chapter 3: Coherent States}
+\paragraph{Problem 4:} Prove the following identities:
+\begin{equation}
+    \ad \ket{\alpha}\bra{\alpha} = \left(\alpha^* + \frac{\partial}{\partial \alpha}\right) \ket{\alpha}\bra{\alpha} \textand \ket{\alpha}\bra{\alpha} \a = \left(\alpha + \frac{\partial}{\partial \alpha^*}\right) \ket{\alpha}\bra{\alpha}.
+\end{equation}
+\paragraph{Solution:} First we recall $\D(\alpha) = \exp(-\abs{\alpha}^2 /2) \exp(\alpha \ad) \exp(-\alpha^*\a)$ and $\D(\alpha) \a \Dd(\alpha) = \a - \alpha \iff \ad \Dd(\alpha) = \Dd(\ad - \alpha^*)$. Taking the derivative of the displacement operator with respect to $\alpha$ yields
+\begin{equation}
+    \frac{\partial \D(\alpha)}{\partial \alpha} = \left( - \frac{\alpha^*}{2} + \ad \right)\D(\alpha) \textand \frac{\partial \Dd(\alpha)}{\partial \alpha} = \left( -\frac{\alpha^*}{2} -\ad \right) \Dd(\alpha) = \Dd(\alpha) \left(  \frac{\alpha^*}{2} - \ad\right).
+\end{equation}
+Now we write
+\begin{align}
+    \frac{\partial}{\partial \alpha} \ket{\alpha}\bra{\alpha} &= \frac{\partial\D(\alpha)}{\partial\alpha} \ket{0}\bra{\alpha} + \ket{\alpha} \bra{0}  \frac{\partial \Dd(\alpha)}{\partial \alpha}  = \left(\ad - \frac{\alpha^*}{2}\right)\ket{\alpha}\bra{\alpha} + \ket{\alpha}\bra{\alpha} \left(\frac{\alpha^*}{2} - \ad\right)\\
+    &= \ad \ket{\alpha}\bra{\alpha} - \ket{\alpha}\bra{\alpha} \ad = \ad \ket{\alpha}\bra{\alpha} - \alpha^* \ket{\alpha}\bra{\alpha} \implies \\
+    \ad \ket{\alpha}\bra{\alpha} &= \left(\alpha^* + \frac{\partial}{\partial \alpha}\right) \ket{\alpha}\bra{\alpha}.
+\end{align}
+Recalling that $\D(\alpha) \a \Dd(\alpha) = \a - \alpha \iff \D(\alpha) \a = (\a - \alpha)\D(\alpha)$, and taking the derivative of the displacement operator with respect to $\alpha^*$ yields
+\begin{equation}
+    \frac{\partial \D(\alpha)}{\partial \alpha^*} = \D(\alpha) \left( -\frac{\alpha}{2} - \a\right) = \left(\frac{\alpha}{2} - \a\right)\D(\alpha) \textand \frac{\partial \Dd(\alpha)}{\partial\alpha^*} = \Dd(\alpha) \left(-\frac{\alpha}{2} + \a\right).
+\end{equation}
+Now we write
+\begin{align}
+    \frac{\partial}{\partial\alpha^*} \ket{\alpha}\bra{\alpha} &= \frac{\partial \D(\alpha)}{\partial \alpha^*} \ket{0}\bra{\alpha} + \ket{\alpha}\bra{0} \frac{\partial \Dd(\alpha)}{\partial \alpha^*} = \left(\frac{\alpha}{2} - \a\right)\ket{\alpha}\bra{\alpha} + \ket{\alpha}\bra{\alpha} \left(-\frac{\alpha}{2} + \a\right)\\
+    &= -\a \ket{\alpha}\bra{\alpha} + \ket{\alpha}\bra{\alpha}\a = - \alpha \ket{\alpha}\bra{\alpha} + \ket{\alpha}\bra{\alpha}\a \implies \\
+    \ket{\alpha}\bra{\alpha}\a &= \left(\alpha + \frac{\partial}{\partial \alpha^*}\right) \ket{\alpha}\bra{\alpha}.\qed
+\end{align}
+
+\unNumberedSubSection{Chapter 4: Emission and Absorption of Radiation by Atoms}
+\paragraph{Problem 6:} Consider the resonant Jaynes-Cummings model for the initial thermal state as in Section 4.7. Assume the atom is initially in the excited state. Analyze the collapse of the Rabi oscillations and determine the dependence of the collapse time on the average photon number of the thermal field.
+
+\paragraph{Solution:} We have the inversion $W(t) = \sum_n^\infty P_n \cos(\Omega_n t)$, with $P_n = \bar{n}^n / (1+ \bar{n})^{n+1}$ and $\Omega_n = 2\lambda \sqrt{n+1}$. For a given $n$ the phase is $\phi_n(t) = \Omega_n t = 2\lambda \sqrt{n+1}$. The spread in phase depend on the dephasing $\Delta\phi$. This dephasing depend on the sensitivity to $n$, and thus we write
+\begin{equation}
+    \Delta \phi = \left.\frac{\partial \phi_n}{\partial n}\right|_{n=\bar{n}} \Delta n = \frac{\lambda t \Delta n}{\sqrt{\bar{n} + 1}}
+\end{equation}
+and for a thermal field we have that $\Delta n \approx \bar{n}$. Thus, we get $\Delta \phi \approx \lambda t \bar{n} / \sqrt{\bar{n} + 1}$. We say that we have decoherence when the spread in phase is $\Delta \phi \approx \pi$. This gives $t_c \approx \pi \sqrt{\bar{n} + 1} /(\lambda \bar{n})$.
+
+\unNumberedSubSection{Chapter 5: Quantum Coherence Functions}
+\paragraph{Problem 4:} Consider the superposition state of the vacuum and one-photon states,$\ket{\psi} = C_0\ket{0} + C_1\ket{1},$ where $|C_0|^2 + |C_1|^2 = 1$, and investigate its coherence properties. Note that quantum mechanically it is “coherent” because it is a pure state. Compare your result with that obtained for the mixture, $\density = |C_0|^2 \ket{0}\bra{0} + |C_1|^2 \ket{1}\bra{1}.$
+
+\paragraph{Solution:} We use $E^+ = iK\a \exp[i(\vec{k}\cdot\vec{r} - \omega t)]$ and $E^- = E^{+\dagger}$. For the superposition state we find that $\qcorrelation(x_i,x_i) = K^2 |C_1|^2$ for $i=1,2$ and $\qcorrelation(x_1, x_2) = K^2 |C_1|^2 \exp[i(k_2 x_2 - k_1x_1 - \omega(t_2 - t_1))]$, and clearly $\qcoherence(x_1,x_2) = \exp[i(k_2 x_2 - k_1x_1 - \omega(t_2 - t_1))]$, and thus $|\qqcoherence|=1$. Since the state is a superposition with the biggest number state $\ket{1}$, the second order correlation function is $\qqcorrelation(x_1, x_2; x_2, x_1) = 0$, since we have $\a\a$ acting on $\ket{0}$ and $\ket{1}$. This gives $|\qqcoherence(x_1, x_2; x_2, x_1)| = 0$. Doing this for the statistical mixture we find the exact same coherence functions.
+
+\unNumberedSubSection{Chapter 6: Beam Splitters and Interferometers}
+\paragraph{Problem  5:} Let the input state to a beam splitter of arbitrary $\theta$ and $\phi$ be $\ket{4}_0\ket{0}_1$. Determine the corresponding output state.
+
+\newcommand{\cost}{\cos(\theta)}
+\newcommand{\costt}{\cos(\theta/2)}
+\newcommand{\sintt}{\sin(\theta/2)}
+\newcommand{\expi}{\exp(i\phi)}
+\newcommand{\expim}{\exp(-i\phi)}
+\newcommand{\kettt}[2]{\ket{#1}_2\ket{#2}_3}
+
+\paragraph{Solution:} We write the inverse of the scattering matrix
+\begin{equation}
+    \vec{B}^{-1} = 
+    \frac{1}{\cost}
+    \begin{pmatrix}
+        \costt & \expi\sintt \\
+        -\expim\sintt & \costt
+    \end{pmatrix}
+    \textand 
+    \begin{pmatrix}
+        \a_0\\
+        \a_1
+    \end{pmatrix}
+    =
+    \vec{B}^{-1}
+    \begin{pmatrix}
+        \a_2\\
+        \a_3
+    \end{pmatrix}.
+\end{equation}
+With this we can write $\ad_0 = [\ad_2 \costt - \ad_3 \expim\sintt]/\cost$. Then, we have that the incoming state is $\ket{4}_0\ket{0}_1 = (\ad_0)^4\ket{0}_0\ket{0}_1$. Carrying out the binomial calculation gives
+\begin{align}
+    \ket{4}_0\ket{0}_1 \xrightarrow{\text{Beam splitter}}  \frac{1}{\cost^4}\big[  &\costt^4 \kettt{4}{0} - 4 \costt^3 \expim \sintt\kettt{3}{1}\\
+     &  +6 \costt^2 \expim^2 \sintt^2 \kettt{2}{2} \\
+     &- 4 \costt \expim^3 \sintt^3 \kettt{1}{3} \\
+     & + \expim^4\sintt^4 \kettt{0}{4} \big]
+\end{align}
+
+\unNumberedSubSection{Chapter 7: Nonclassical Light}
+
+\unNumberedSubSection{Chapter 9: Optical Test of Quantum Mechanics}

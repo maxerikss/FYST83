@@ -1,0 +1,81 @@
+\section{Field Quantization}
+\subsection{Quantization of a Single Mode Field}
+For a cavity with ideal conducting walls, the electric field must vanish at the boundaries. This gives rise to standing waves. Maxwell's equations without generating sources are
+\begin{equation}
+    \nabla \times \vec{E} = - \frac{\partial \vec{B}}{\partial t}, \quad \nabla \times \vec{B} = \mu_0 \epsilon_0\frac{\partial \vec{E}}{\partial t}, \quad \nabla \cdot \vec{B} = 0, \quad \text{and}\quad  \nabla \cdot \vec{E} = 0.
+\end{equation}
+Letting the cavity have the boundary positions $0,L$ and wave number $k = n\pi/L$ with $n\in\mathbb{N}$. The corresponding frequency is $\omega = c\abs{k}$. Using Maxwell's equations we can find that 
+\begin{equation}
+    \vec{E}(\vec{r}, t) = \vec{e}_x E(t) \sin(kz) \quad\text{and}\quad \vec{B}(\vec{r}, t) = \vec{e}_y B(t) \cos(kz).
+\end{equation}
+If we define 
+\begin{equation}
+    E(t) = \omega \sqrt{\frac{2}{V\epsilon_0}}q(t) \quad\text{and}\quad B(t) = \frac{1}{c} \sqrt{\frac{2}{V\epsilon_0}} p(t).
+\end{equation}
+The Hamiltonian is 
+\begin{equation}
+    H = \frac{1}{2} (p(t)^2 + \omega^2 q(t)^2)
+\end{equation}
+
+With this we can verify that the expression for the Hamiltonian follows Hamilton's equations. That is, $p,q$ are analogues to particle position and momentum. \question{Is this a first sign of field quantizations and particles being the same?} We can use the correspondence rule to replace the variables $p,q$ with their operator counterparts $\hat{p},\hat{q}$, which follow the canonical commutation relation $\comm{\hat{p}}{\hat{q}} = i\hbar$. This gives the operator form for the Hamiltonian
+\begin{equation}
+    \hat{H} = \frac{1}{2} (\p^2 + \omega^2\q^2).
+\end{equation}
+Introducing creation and annihilation operators
+\begin{equation}
+    \a = \frac{1}{\sqrt{2\hbar\omega}} (\omega \q + i\p) \quad\text{and}\quad \ad = \frac{1}{\sqrt{2\hbar\omega}} (\omega \q - i\p),
+\end{equation}
+with the commutation relation $\comm{\a}{\ad} = 1$, which gives the Hamiltonian 
+\begin{equation}
+    \hamiltonian = \hbar\omega \left(\ad\a + \frac{1}{2}\right),
+\end{equation}
+showing that field excitations happen in units of $\hbar\omega$. For a given energy eigenstate $\ket{n}$ with energy $E_n$, the creation and annihilation operators have the properties
+\begin{equation}
+    \a\ket{n} = \sqrt{n}\ket{n-1} \quad\text{and}\quad \ad\ket{n} = \sqrt{n+1}\ket{n+1},
+\end{equation}
+which means that for the energy $\ad\hamiltonian\ket{n} = (E_n + \hbar\omega)(\ad\ket{n})$, and similarly for $\a$ but with $-\hbar\omega$. Thus, we can see that these operators creates new eigenstates of the Hamiltonian with energy differing by $\hbar\omega$. Worth noting is that we are in the Schrödinger picture and the time-dependency is placed on the wave functions and not the operators. Furthermore, we can define the number operator $\hat{n} = \ad\a$ with the property $\hat{n}\ket{n} = n\ket{n}$. Which gives $E_n = \hbar\omega(n + 1/2)$. Also, the energy eigenstates $\ket{n}$ are orthogonal and form a complete set.
+
+\subsection{Quantum Fluctuations of a Single Mode Field}
+The electric and magnetic field operators are
+\begin{equation}
+    \hat{E}(z, t) = \mathcal{E}_0 (\a + \ad)\sin kz \textand \hat{B}(z,t) = -i\mathcal{B}_0 (\a - \ad)\cos kz.
+\end{equation}
+The field is not well defined for the number states $\ket{n}$ since $\bra{n}\hat{E} \ket{n} = 0$, i.e. the mean field is zero, or we can see it as the field having a random phase. The square of the field, contributing to energy, is non-zero. We characterize fluctuations of a operator (field) by the standard deviation 
+\begin{equation}
+    \Delta \hat{O} = \sqrt{\expval{\hat{O}^2} - \expval{\hat{O}}^2}.
+\end{equation}
+Interestingly, $\Delta \hat{E}$ is non-zero even for $n=0$, which means the field has vacuum fluctuations. \question{Are these the fluctuations that can create particle-antiparticle pairs?}
+
+\subsection{Quadrature Operators for a Single Mode Field}
+Defining quadrature operators, which can be considered dimensionless position and momentum operators, 
+\begin{equation}
+    \hat{X}_1 = \frac{1}{2}(\a + \ad) \textand \hat{X}_2 = \frac{1}{2i} (\a - \ad).
+\end{equation}
+They have the commutation relation $\comm{\hat{X}_1}{\hat{X}_2} = i/2$ and thus $\Delta \hat{X}_1 \Delta \hat{X_2} \geq 1/4$, which is minimized for the vacuum state $\ket{0}$. According to field theory, the excitations, colloquilly called photons, are spread out over the entire mode, and are not localized. \question{Doesn't this mean that the wave-particle duality is removed? And that instead of particles the wave itself is quantized in its properties. Or do we mean that the 'photon' is say a Gaussian wave packet of some sort?}
+
+\subsection{Multimode Fields}\label{sec:multimode}
+To generalise to free space we model it as a cubic cavity with side length $L$ where $L\to\infty$. We impose periodic boundary conditions on all faces, such that, $e^{ik_\nu \nu} = e^{ik_\nu (\nu + L)}$ with $k_\nu = (2\pi/L)n_\nu$ and $n_\nu \in \mathbb{Z}$ with $\nu \in \{x, y, z\}$. Considering spin, $s$, we obtain the Hamiltonian
+\begin{equation}
+    \hamiltonian = \sum_{\vec k s} \hbar \omega_k \left( \ad_{\vec k s}\a_{\vec k s} + \frac 1 2  \right)
+\end{equation}
+and $\a_{\vec k s}, \ad_{\vec k s}$ are defined similarly as in the single mode case. The multimode field operators are
+\begin{align}
+    \hat{\vec{E}}(\vec r, t) &= i \sum_{\vec k s} A_k \vec e_{\vec k s} \left[ \a_{\vec k s} e^{i(\vec k \cdot \vec r - \omega_k t)} - \ad_{\vec k s} e^{-i(\vec k \cdot r - \omega_k t)} \right],\\
+    \hat{\vec{B}}(\vec r, t) &= \frac{i}{c} \sum_{\vec k s} (\vec \kappa \times \vec e_{\vec k s} ) A_k \left[ \a_{\vec k s} e^{i(\vec k \cdot \vec r - \omega_k t)} - \ad_{\vec k s} e^{-i(\vec k \cdot r - \omega_k t)} \right],
+\end{align}
+where $\vec \kappa = \vec k /\abs{\vec k}$ and $A_k = \sqrt{\hbar \omega_k/ (2 \epsilon_0 V)}$. If $1 / \abs{\vec k} \gg \abs{\vec r_{\text{atom}}}$, we can use the dipole approximation replacing the exponential $e^{i\vec k \cdot \vec r}$ with unity, optical radiation has a large enought wavelength to allow this. \question{What are the limits of the dipole approximation? And what problems arises when we use it for systems where it is not valid.}
+
+\subsection{Thermal Fields}\label{sec:thermalFields}
+A black body can be modelled as a cavity and assuming a weak coupling to an external heat bath, such that the system may be treated as isolated in the microcanonical ensemble, we can use the Hamiltonian from previous sections to describe the system. This gives us that the mean photon number, or the mean number of excitation in the field $\bar n$, is given by
+\begin{equation}
+    \bar n = \frac{1}{e^{\hbar\omega / k_B T} - 1} \textand \bar n \approx
+    \begin{cases}
+        k_B T/\hbar \omega \quad k_B T \gg \hbar \omega\\
+        e^{-\hbar\omega /k_B T} \quad k_B T \ll \hbar \omega
+    \end{cases}\label{eq:meanN}
+\end{equation}
+The probability of finding $n$ photons in the cavity is described by $P_n = \bar n^n / (1 + \bar n)^{n+1}$, that is $\density_{th} = \sum_n P_n \ket{n}\bra{n}$. Interestingly, we also have that the fluctuations of the number operator are larger than the average photon number. \question{Does this have any implications?} Using the average energy per photon $\hbar \omega \bar n $ and calculating the energy per unit frequency and unit volume, using density of modes, we obtain Planck's law
+\begin{equation}
+    \bar U (\omega, T) = \frac{\hbar \omega^3}{\pi^2 c^3} \frac{1}{e^{\hbar\omega / k_B T} - 1}.
+\end{equation}
+Using the approximations in Eq. \eqref{eq:meanN}, we can derive Rayleigh's law ($k_B T \gg \hbar \omega$) and Wien's law $(k_B T \ll \hbar \omega)$. Stefan-Boltzmann's law is obtained by integrating $\bar U(\omega, T)$ over all frequencies. 

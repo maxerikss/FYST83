@@ -1,0 +1,42 @@
+\documentclass[10pt,titlepage]{article}
+
+\input{format/preamble}
+
+%%%
+\def\nameoflab{Portfolio\\ \large or Notes on Introductory Quantum Optics by Gerry \& Knight}
+\def\coursecode{FYST83}
+
+\def\authorOne{Max Eriksson}
+\def\authorOneMail{maxerikss@gmail.com}
+\def\headerName{M. Eriksson}
+
+
+\begin{document}
+\include{format/titlepage}
+%\pagestyle{empty}
+\input{format/header}
+%\doublespacing
+\fancyfoot{}
+\tableofcontents
+\clearpage
+\input{format/header.tex}
+\setcounter{page}{1}
+
+\pagestyle{fancy}
+
+\setcounter{section}{1}
+\input{paper/Chapter2}
+\input{paper/Chapter3}
+\input{paper/Chapter4}
+\input{paper/Chapter5}
+\input{paper/Chapter6}
+\input{paper/Chapter7}
+\setcounter{section}{8}
+\input{paper/Chapter9}
+\input{paper/Lab.tex}
+\input{paper/Problems.tex}
+
+%\include{paper/appendix}
+
+
+\end{document}

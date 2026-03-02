@@ -1,0 +1,40 @@
+\section{Beam Splitters and Interferometers}
+
+\subsection{Experiments with Single Photons}
+To explain the photoelectric effect with all its aspects the field must be treated quantum mechanically. Grangier created a source able to produce anti-correlated photons, with the help of a beam splitter. In contrast to Taylor, who's source of photon was thermal and thus exhibited bunching effects, leading to misinterpretations.
+
+\subsection{Quantum Mechanics of Beam Splitters}
+For a classical light field with amplitude $\epsilon_1$ incident on a lossless beam splitter, the resulting reflected field is $\epsilon_2 = r\epsilon_1$ and the resulting transmitted field is $\epsilon_3 = t\epsilon_1$ with $r,t$ complex. Since the beam splitter is lossless we have $\abs{\epsilon_1}^2 = \abs{\epsilon_2}^2 + \abs{\epsilon_3}^2$ or equivalently $\abs{r}^2 + \abs{t}^2 = 1$. Treating the beam splitter quantum mechanically instead we recall that we have an incident vacuum state on the currently unused plane of the beam splitter. Replacing $\epsilon_i$ with $\a$ gives $\a_2 = t'\a_0 + r\a_1$ and $\a_3 = r'\a_0 + t\a_1$, we can write this as a matrix equation 
+\begin{equation}
+    \begin{pmatrix}
+        \a_2\\
+        \a_3
+    \end{pmatrix}
+    =
+    \vec{B}
+    \begin{pmatrix}
+        \a_0\\
+        \a_1
+    \end{pmatrix}
+    \textwith \vec{B} =
+    \begin{pmatrix}
+        t' & r\\
+        r' & t
+    \end{pmatrix},
+\end{equation}
+where $\vec{B}$ is the scattering matrix and $r,r',t,t'$ follow the reciprocity relations: $\abs{r'} = \abs{r}, \abs{t'}=\abs{t}, \abs{r}^2 + \abs{t}^2 = 1, r^*t' + r't^* = 0$ and $r^*t + r't'^*=0$. These relations are needed to preserve the commutation relations of the beam splitter. We also define the transmissivity $T=\abs{t}^2$ and reflectivity $R=\abs{r}^2$. The photon number, together with energy, is conserved through the beam splitter. For $0\leq \theta \leq \pi$ and $0\leq \phi \leq 2\pi$ we can rewrite the scattering matrix using $t=t'=\cos(\theta/2)$ and $r=-r'^* = \exp(i\phi)\sin(\theta/2)$, where $\theta$ determines the transmissivity and reflectivity, while $\phi$ determines the phase shift introduced on the reflected beam, which we take to be $\phi = \pi/2$. \question{How easy is it to manufacture a mirror with a known phase-shift like this?} For a number state incident we get an entangled output state, while if the incident state is a coherent state we do not get an entangled state. Note that the limiting case of a single incident photon is not possible to arrive to from the coherent state. For a 50:50 beam splitter the with two incident photons, one on each face, the output will be either $i(\ket{2}\ket{0} + \ket{0}\ket{2})/\sqrt{2}$, that is, we will never detect one photon in each detector, but only two photons in either. This comes from photon interference, and was demonstrated by Hong, Ou, and Mandel. This effect is not general if we have $n$ incident photons on each face of the beam splitter, however the output state with $2n$ still are the most likely. The resulting states of $n$ incident photons are called arcsine states. The interference of one incident photon together with an incident coherent state will dramatically change the outgoing photon distribution compared to a vacuum state. \study{It would be interesting to find a physical explanation for why a macroscopic amount of photons ($|\alpha|^2 = \bar{n}$ large) is so affected by just a single photon. }
+
+\subsection{Interferometry with a Single Photon}
+In a Mach-Zehnder interferometer we have a beam splitter and both transmission and reflection has a mirror leading to another beam splitter with two detectors. The detectors cannot distinguish which way the photon took in the first beam splitter. One of the ways has a phase shifter. Sending in a single photon (having the vacuum state incident on the second face), gives the probability of detecting a photon in the first detector as $P_1 = (1-\cos\theta)/2$ and the second detector $P_2 = (1+\cos\theta)/2$, where $\theta$ is the relative phase between the two ways, imparted by the phase shifter. That is, the single photon interferes with itself. 
+
+\stepcounter{subsection}\subsection{Interferometry with Coherent States of Light}
+We use the same Mach-Zehnder interferometer as for a single photon but switch the single-photon to a coherent state, and define the number difference operator $\hat{O} = \ad \a - \hat{b}^\dagger \hat{b}$, where $\ad \a$ corresponds to the number of detected photons in detector one and $\hat{b}^\dagger \hat{b}$ the number of detected photons in detector 2. The expectation value for the number difference operator with respect to the resulting state after the two beam splitters is $\langle \hat{O} \rangle = |\alpha|^2\cos\theta$, which is similar to coherent classical light. The phase uncertainty, or the sensitivity of the measurement, is defined as $\Delta \theta = \Delta \hat{O} / \partial_\phi \langle\hat{O}\rangle = 1 /\sqrt{\bar{n}}|\sin\phi|$, with $\phi$ being the relative phase. These types of states, especially squeezed states (which will be discussed in Chapter 7) is of particular interest due to the resulting entanglement.
+
+\subsection{The SU(2) Formulation of Beam Splitters and Interferometry}
+Beam splitters and interferometers may be described in the language of quantum angular momentum algebra. Defining $\J_+ = \ad_0 \a_1$, $\J_- = \Jd_+$ and $\J_3 = (\ad_0\a_0 - \ad_1\a_1)/2$, we get $[\J_+,\J_-] = 2\J_3$, $\J_1 = (\J_+ + \J_-)/2$, and $\J_2 = (\J_+ - \J_-)/2i$ with $[\J_i, \J_j] = i\epsilon_{ijk}\J_k$ for $i,j,k\in\{1,2,3\}$. This is the familiar angular momentum algebra in quantum mechanics, also known as special unitary group of degree 2 in Lie algebra, SU(2). This allows us to describe the unitary evolution of a beam splitter as the rotation about an axis. Generally we can write $\hat{U}(\theta, \phi) = \exp[(\J_+ e^{i\phi} - \J_- e^{-i\phi})\theta/2]$, and as an example, for a 50/50 beam splitter ($\theta = \pi/2$) with the mirror imparting a $\pi/2$ phase shift ($\phi=\pi/2$) we have $\hat{U}(\pi/2,\pi/2) = \exp(i\pi\J_1/2)$. Thus, the beam splitter is a $\theta = \pi/2$ rotation about the $\J_1$ axis. With this language we can describe interferometers, which gives the same result as earlier in the chapter. 
+
+\stepcounter{subsection}\subsection{Photons Do Not Interfere}
+What interferes are quantum amplitudes, not the photons, which are described by wave packets. We note that Dirac's phrase: ``Each photon interferes only with itself. Interference between two photons never occurs.'' Should not be taken as truth. It is instead the quantum amplitudes associated with the quantized field and hence the paths in the interferometer that causes single photon interference, and multiphoton interference means interference with states of light containing more than one photon.
+
+\subsection{Are Photons Entangled}
+Single photons themselves are not entangled, however, the field modes of the single photon can be entangled with each other. Say a single photon passes through a beam splitter, the resulting field modes (reflected or transmitted) will be entangled and spatially separated.

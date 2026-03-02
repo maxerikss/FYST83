@@ -1,0 +1,20 @@
+% In this folder you can CTRL + X things that you don't want in your main project right now - but think you might want to use later
+
+%% 1.1
+Given the boundary positions $0, L$ we can define a frequency $\omega_n = c n \pi / L$, where $n \in \mathbb{N}$. The $n$ is related to which mode we are in, and since we only consider a single mode we can omit the subscript $n$ for now. The wave number $k = \omega / c$, and thus we can write a solution to the Maxwell equations for a cavity as
+\begin{equation}
+    \vec{E}(\vec{r}, t) = \vec{e}_x E(t) \sin(kz),
+\end{equation}
+where we have assumed polarization in $x$-direction $(\vec{e}_x)$ and propagation along $z$. Using Maxwell's equation we can find that
+\begin{equation}
+    \vec{B}(\vec{r}, t) = \vec{e}_y B(t) \cos(kz).
+\end{equation}
+Constructing the Hamiltonian
+\begin{align}
+    H &= \frac{1}{2} \int d^3 \vec{r} \left( \epsilon_0 \vec{E}^2 + \frac{1}{\mu_0} \vec{B}^2 \right) = \frac{\epsilon_0}{2} \int d^3\vec{r} \left(E^2 \sin^2(kz)+ c^2 B^2 \cos^2(kz)\right) \\
+    &=  \frac{V\epsilon_0}{2} \left(\frac{E^2}{2} +c^2 \frac{B^2}{2} \right) = \frac{1}{2} (p(t) + \omega^2 q(t)),
+\end{align}
+where in the last step we use 
+\begin{equation}
+    E(t) = \omega \sqrt{\frac{2}{V\epsilon_0}}q(t) \quad\text{and}\quad B(t) = \frac{1}{c} \sqrt{\frac{2}{V\epsilon_0}} p(t).
+\end{equation}
