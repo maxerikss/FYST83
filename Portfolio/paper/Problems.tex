@@ -103,5 +103,47 @@ With this we can write $\ad_0 = [\ad_2 \costt - \ad_3 \expim\sintt]/\cost$. Then
 \end{align}
 
 \unNumberedSubSection{Chapter 7: Nonclassical Light}
+\paragraph{Problem 7:} Study the dynamics of the Jaynes-Cummings model where the initial coherent state of the field is replaces by the squeezed state $\ket{\alpha,\xi}$. Check the limiting cases of $r\to 0$ (the coherent state) and where $\alpha \to 0$ (the squeezed vacuum state).
+
+\paragraph{Solution:} The general solution to the Jaynes-Cummings model is found in Eq. (4.119) in the book.
+\begin{align}
+    \ket{\psi(t)} = \sum_n \big\{ &\left[C_e c_n \cos(\lambda t \sqrt{n+1})- i C_g c_{n+1}\sin(\lambda t\sqrt{n+1})\right]\ket{e} \\
+     +&\left[ -iC_e c_{n-1}\sin(\lambda t\sqrt{n}) + C_g c_n \cos(\lambda t\sqrt{n}) \right] \ket{g} \big\}\ket{n}
+\end{align}
+and for the atom initially in the excited state we have $C_g = 0$ and $C_e = 1$ and for the field in $\ket{\alpha, \xi}$ we have $c_n$ given by Eq. \eqref{eq:cnSqueezedDisplaced}. Rewriting using this we get
+\begin{equation}
+    \ket{\psi(t)} = \sum_n c_n\cos(\lambda t \sqrt{n+1})\ket{e,n} - i \sum_n c_n\sin(\lambda t \sqrt{n+1})\ket{g, n+1}.
+\end{equation}
+The atomic inversion is given by $W(t)=\bra{\psi(t)} \hat{\sigma}_z \ket{\psi(t)} = \sum_n \abs{c_n}^2 \cos(2\lambda t \sqrt{n+1})$. For $r \to 0$ we have that $\gamma = \alpha$, and we get 
+\begin{equation}
+    c_n (r\to 0) = \exp(-\frac{1}{2}\abs{\alpha^2}) \frac{\alpha^n}{\sqrt{n!}}
+\end{equation}
+and for $\alpha \to 0$ we have that $\gamma = 0$, and we get
+\begin{equation}
+    c_n(\alpha \to 0) = \frac{1}{\sqrt{\cosh(r)}} (-1)^{n/2} \frac{\sqrt{n!}}{2^{n/2} (n/2)!} e^{in\theta/2} \tanh^2(r) \cos^2(n\pi/2).
+\end{equation}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics{problem7_7.pdf}
+    \caption{The atomic inversion plotted for $\alpha = 5, r = 2, \lambda = 2$, and $\theta = \pi/4$. }
+\end{figure}
 
 \unNumberedSubSection{Chapter 9: Optical Test of Quantum Mechanics}
+\paragraph{Problem 3:} As mentioned in the text, using back-to-back type I down-converters, where one is rotated $\qty{90}{\degree}$ around the normal to the other and where both are pumped by light polarized at $\qty{45}{\degree}$, the Bell state 
+\begin{equation}
+    \ket{\Phi^+} = \frac{1}{\sqrt{2}} (\ket{H}_1\ket{H}_2 + \ket{V}_1\ket{V}_2)
+\end{equation} 
+can be produced. Analyze the possible violations of Bell's inequalities (in the form of CHSH) with respect to this state.
+
+\paragraph{Solution:} We can make the basis transformation $\ket{\theta}_1 = \cos\theta \ket{H}_1 + \sin\theta\ket{V}_1, \ket{\theta_\perp}_1 = -\sin\theta\ket{H}_1 + \cos\theta\ket{V}_1$ and $\ket{\phi}_2 = \cos\phi\ket{H}_2 + \sin\phi\ket{V}_2, \ket{\phi_\perp}_2 = -\sin\phi\ket{H}_2 + \cos\phi\ket{V}_2$. Using this and the trigonometric addition-formulas we obtain
+\begin{equation}
+    \ket{\Phi^+} = \frac{1}{\sqrt{2}} \left[\cos(\theta-\phi) (\ket{\theta}_1 \ket{\phi}_2 + \ket{\theta_\perp}_1\ket{\phi_\perp}_2)+ \sin(\theta -\phi) (\ket{\theta}_1\ket{\phi_\perp}_2 - \ket{\theta_\perp}_1\ket{\phi}_2) \right].
+\end{equation}
+Calculating $C(\theta,\phi) = \lineexpval{\hat{A}(\theta)\hat{B}(\phi)}$ as defined in Sec. 9.6, gives $C(\theta,\phi) = \cos[2(\theta - \phi)]$. 
+
+\begin{figure}[H]
+    \centering
+    \includegraphics{problem9_3.pdf}
+    \caption{The CHSH inequality plotted against $\theta$ and $\phi$ for $\theta'=\pi/4$ and $\phi' = -\pi/8$.}
+\end{figure}
