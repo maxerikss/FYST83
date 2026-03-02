@@ -31,9 +31,11 @@ cPlot = ax.contourf(X, Y, Z, levels=100, cmap='Blues')
 cPlot.set_rasterized(True)
 fig.colorbar(cPlot)
 
-line = ax.contour(X, Y, Z, levels=[2], colors='red', linewidths=3, zorder=4)
-ax.clabel(line, fmt=lambda x: "S=2" if np.isclose(x, 2, atol=0.1) else "", 
-          inline=True, fontsize=12, colors='red', zorder=5)
+levels = [-2, 2]
+fmt = {-2: r'$|S|=2$', 2: r'$|S|=2$'}
+CS = ax.contour(X, Y, Z, levels=levels, colors='red', linewidths=3, zorder=4, linestyles='solid')
+ax.clabel(CS, fmt=fmt, inline=True, fontsize=12, colors='red', zorder=5)
+
 
 positions = [0, np.pi/4, np.pi/2, 3*np.pi/4, np.pi, 5*np.pi/4, 3*np.pi/2, 7*np.pi/4, 2*np.pi]
 labels = [r'$0$', r'$\pi/4$', r'$\pi/2$', r'$3\pi/4$', r"$\pi$", r'$5\pi/4$', r'$3\pi/2$', r'$7\pi/4$', r'$2\pi$']
